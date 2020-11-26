@@ -1,2 +1,188 @@
-# Encryption cli app
- 
+# Encryption CLI APP
+
+The Encryption command line tool is a tool that can provide the encryption and decryption representation for any string given by the user using some pre-defined algorithms
+
+## the Main Tasks:
+the tool can encrypt and decrypt string for the following algorithms:
+1) Shift Algorithm aka Ceaser Cipher
+2) Matrix Algorithm
+3) Reverse Algorithm
+
+## Dependencies
+
+### Installing Dependencies
+
+#### PIP Dependencies
+
+Once you have your virtual environment setup and running, install dependencies by running:
+
+```bash
+pip install -r requirements.txt
+```
+This will install all of the required packages we selected within the `requirements.txt` file.
+
+## Testing
+To run the tests, run
+```
+python ceaser\shift_test.py
+python matrix\matrix_test.py
+python matrix\matrix_helpers_test.py
+```
+
+## Encryption Tool
+the tool exists in the encryption_tool.py to run the tool simply use the command
+```
+python encryption_tool.py
+```
+first user'll be greated with a msg like this to enter the input text
+#### Please type the desired text
+then the tool will ask to specify the desired algorithm
+
+#### Please enter 'shift', 'matrix', 'reverse' or (s/m/r) to pick the desired algorithm name
+user can enter:
+[s or shift (upper or lower case)] for the shift algorithm,
+[m or matrix (upper or lower case)] for the matrix algorithm,
+[r or reverse (upper or lower case)] for the reverse algorithm
+any other input would be discarded and user will be asked to re-choose the desired algorithm
+
+then the tool would ask for the action type 
+
+#### Please type 'encrypt', 'decrypt' or (e/d) to pick the required action
+user can enter:
+[e or encrypt (upper or lower case)] for Encryption,
+[d or decrypt (upper or lower case)] for Decryption
+any other input would be discarded and user will be asked to re-choose the desired action
+
+then the tool would then display the result
+
+#### the result is ****
+then the tool would ask if the user wants to exit
+
+#### Do you want to exit program? y/n
+user can enter:
+[y or Y] to exit,
+[n or N] to continue
+
+## Algorithms
+### Shift Algorithm
+shifts every character in the string by provided integer shift amount
+
+
+### Matrix Algorithm
+Convert each character of the string to the Binary representation of ASCII character (16
+characters) then multiplies the resultant matrix with the ENCRYPT_KEY_MATRIX to return the final encrypted matrix
+
+
+### Reverse Algorithm
+reverses the given string using functions remotely implemented using the endpoints:
+● Encryption : http://backendtask.robustastudio.com/encode
+● Decryption : http://backendtask.robustastudio.com/decode
+
+
+## Methods
+
+### function: ceaser_encryption
+####   parameters: 
+2, str_plain_text(string), int_shift(integer)
+####   return: 
+1, encrypted_text(string)
+####   functionality: 
+encrypts the input plain text with the shift algorithm and returns the encrypted text
+
+
+### function: ceaser_decryption
+####   parameters: 
+2, str_encrypted_text(string), int_shift(integer)
+####   return: 
+1, plain_text(string)
+####   functionality: 
+decrypts the input encryption text with the shift algorithm and returns the original plain text
+
+
+### function: matrix_encryption
+####   parameters: 
+1, str_plain_text(string)
+####   return: 
+1, int_encrypted_matrix(array of integers)
+####   functionality: 
+encrypts plain text with the matrix and returns the encrypted resultant matrix
+
+### function: matrix_decryption
+####   parameters: 
+1, int_encrypted_matrix(array of integers)
+####   return: 
+1, str_plain_text(string)
+####   functionality: 
+decrypts the encrypted matrix with the matrix algorithm and returns plain text
+
+
+### function: plain_text_to_plain_matrix
+####   parameters: 
+1, str_plain_text(string)
+####   return: 
+1, int_plain_matrix(array of integers)
+####   functionality: 
+takes each plain text character and changes it to a 16 items list equivalent to the binary representation of its ascii value then returns the resultant plain text matrix for all characters in the input plain text
+
+
+### function: plain_matrix_to_plain_text
+####   parameters: 
+1, int_plain_matrix(array of integers)
+####   return: 
+1, str_plain_text(string)
+####   functionality: 
+takes the binary representation of its ascii value for each plain text character and gets the equivalent  character then returns the plain text string
+
+
+### function: matrix_multiplication
+####   parameters: 
+2, int_plain_matrix(array of integers), int_key_matrix(array of integers)
+####   return: 
+1, int_result_matrix(array of integers)
+####   functionality: 
+muliplies the 2 input matricies and returns a resultant matrix output
+
+
+### function: reverse_encryption
+####   parameters: 
+1, str_plain_text(string)
+####   return: 
+1, str_encoded_text(string)
+####   functionality: 
+encrypts the input plain text with the reverse algorithm and returns the encryption text
+
+
+### function: reverse_decryption
+####   parameters: 
+1, str_encoded_text(string)
+####   return: 
+1, str_plain_text(string)
+####   functionality: 
+decrypts the input encryption text with the reverse algorithm and returns the original plain text
+
+
+### function: get_non_empty_valid_string_field
+####   parameters: 
+2, str_type(string), str_accepted_vals_list(list of strings)
+####   return: 
+1, str_input_value(string)
+####  functionality: 
+loop over the value inputed by user till it reaches a valid value that is in the str_accepted_vals_list
+
+
+### function: get_non_empty_valid_int_field
+####   parameters: 
+0, No parameters
+####   return: 
+1, int_integer_value(integer)
+####   functionality: 
+loop over the value inputed by user till then user inputs a valid integer value
+
+
+### function: encryption_tool
+####   parameters: 
+0, No parameters
+####   return: 
+0, No return
+####   functionality: 
+runs the cli tool for encrypting and decrypting text passed by the user with the desired algorithm
