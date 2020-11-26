@@ -4,6 +4,8 @@ from ceaser.ceaser_encryption import ceaser_encryption
 from ceaser.ceaser_decryption import ceaser_decryption
 from matrix.matrix_encryption import matrix_encryption
 from matrix.matrix_decryption import matrix_decryption_text
+from reverse.reverse_encryption import reverse_encryption
+from reverse.reverse_decryption import reverse_decryption
 
 # ======================== get_non_empty_valid_string_field ======================== #
 #function: get_non_empty_valid_string_field
@@ -16,7 +18,7 @@ def get_non_empty_valid_string_field(str_type, str_accepted_vals_list):
         str_input_value = ""
 
         # loop over the str_input_value if the user typed invalid algorithm
-        # name other than shift or matrix 
+        # name other than shift, matrix or reverse
         while (str_input_value not in str_accepted_vals_list):
             # check if this isn't the first loop iteration
             if str_input_value != "":
@@ -24,10 +26,13 @@ def get_non_empty_valid_string_field(str_type, str_accepted_vals_list):
                 
             # get the algorithm type
             if str_type == 'algorithm':
-                str_input_value = input("please enter 'shift', 'matrix' or (s/m) to pick the desired algorithm name\n").lower().replace(" ","")
+                str_input_value = input("please enter 'shift', 'matrix', 'reverse' or (s/m/r) to pick the desired algorithm name\n").lower().replace(" ","")
             # get the action type
             elif str_type == 'action':
                 str_input_value = input("please type 'encrypt', 'decrypt' or (e/d) to pick the required action\n").lower().replace(" ","")
+            
+            elif str_type == 'exit':
+                str_input_value = input('do you want to exit program? y/n\n').lower().replace(" ","")
     
         return str_input_value
     except:
@@ -81,7 +86,7 @@ def encryption_tool():
     
         # get valid value from terminal for the algorithm type
         str_algorithm_type = get_non_empty_valid_string_field('algorithm', 
-        ['shift','s','matrix','m'])
+        ['shift','s','matrix','m','reverse','r'])
 
         # get valid value from terminal for the action type
         str_action_type = get_non_empty_valid_string_field('action', ['decrypt', 'd', 'encrypt', 'e'])  
@@ -100,12 +105,18 @@ def encryption_tool():
             if str_action_type in ['encrypt','e']:
                 str_result = str(matrix_encryption(str_input_text))
             elif str_action_type in ['decrypt','d']:
-                str_result = matrix_decryption_text(str_input_text)     
+                str_result = matrix_decryption_text(str_input_text)        
+
+        elif str_algorithm_type in ['reverse','r']:
+            if str_action_type in ['encrypt','e']:
+                str_result = str(reverse_encryption(str_input_text))
+            elif str_action_type in ['decrypt','d']:
+                str_result = reverse_decryption(str_input_text) 
         print(('the result is {r}').format(r=str_result))
         
         # ensure that the user doesn't want to exit the program
-        str_exit = input('do you want to exit program? y/n\n')
-        if str_exit in ['y','Y']:
+        str_exit = get_non_empty_valid_string_field('exit',['y','Y','N','n'])
+        if str_exit == 'y':
             break
     return
 
