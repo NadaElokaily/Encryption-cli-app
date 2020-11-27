@@ -21,6 +21,31 @@ pip install -r requirements.txt
 ```
 This will install all of the required packages we selected within the `requirements.txt` file.
 
+## File Structure
+app
+    src
+        ceaser
+            ceaser_encryption.py
+            ceaser_decryption.py
+            shift_test.py
+        matrix
+            matrix_macros.py
+            matrix_encryption_helpers.py
+            matrix_encryption.py
+            matrix_decryption.py
+            matrix_test.py
+            matrix_helpers_test.py
+        reverse
+            reverse_macros.py
+            reverse_encryption.py
+            reverse_decryption.py
+        encryption_tool.py
+    Dockerfile
+    README.md
+
+## Tool 
+    the main command line tool resides in /app/encryption_tool.py
+
 ## Testing
 To run the tests, run
 ```
