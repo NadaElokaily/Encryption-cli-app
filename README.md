@@ -1,6 +1,6 @@
 # Encryption CLI APP
 
-The Encryption command line tool is a tool that can provide the encryption and decryption representation for any string given by the user using some pre-defined algorithms
+The Encryption command line tool is a tool that can provide the encryption and decryption representation for any string received from the user using some pre-defined algorithms
 
 ## the Main Tasks:
 the tool can encrypt and decrypt string for the following algorithms:
