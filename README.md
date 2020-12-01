@@ -23,25 +23,25 @@ This will install all of the required packages we selected within the `requireme
 
 ## File Structure
 app
-    src
-        ceaser
-            ceaser_encryption.py
-            ceaser_decryption.py
-            shift_test.py
-        matrix
-            matrix_macros.py
-            matrix_encryption_helpers.py
-            matrix_encryption.py
-            matrix_decryption.py
-            matrix_test.py
-            matrix_helpers_test.py
-        reverse
-            reverse_macros.py
-            reverse_encryption.py
-            reverse_decryption.py
-        encryption_tool.py
-    Dockerfile
-    README.md
+├──src
+│     ├──ceaser
+│     │     ├──ceaser_encryption.py
+│     │     ├──ceaser_decryption.py
+│     │     └──shift_test.py
+│     ├──matrix
+│     │     ├──matrix_macros.py
+│     │     ├──matrix_encryption_helpers.py
+│     │     ├──matrix_encryption.py
+│     │     ├──matrix_decryption.py
+│     │     ├──matrix_test.py
+│     │     └──matrix_helpers_test.py
+│     ├──reverse
+│     │     ├──reverse_macros.py
+│     │     ├──reverse_encryption.py
+│     │     └──reverse_decryption.py
+│     └──encryption_tool.py
+├── Dockerfile
+└──README.md
 
 ## Tool 
     the main command line tool resides in /app/encryption_tool.py
@@ -87,6 +87,36 @@ then the tool would ask if the user wants to exit
 user can enter:
 [y or Y] to exit,
 [n or N] to continue
+
+
+## Sample encryption input case
+```
+please type the desired text
+Hello World
+please enter 'shift', 'matrix', 'reverse' or (s/m/r) to pick the desired algorithm name
+s
+please type 'encrypt', 'decrypt' or (e/d) to pick the required action
+e
+please enter the shift amount
+3
+the result is Khoor Zruog
+do you want to exit program? y/n
+```
+
+## Sample decryption input case
+```
+please type the desired text
+[[15, 12, 12, 14, 15, 15, 14, 9, 6, 14, 12, 8, 8, 20, 17, 5], [18, 19, 5, 22, 8, 13, 14, 10, 5, 22, 20, 20, 18, 27, 20, 12], [19, 14, 13, 21, 15, 17, 21, 18, 8, 22, 17, 15, 14, 27, 18, 14], [19, 14, 13, 21, 15, 17, 21, 18, 8, 22, 17, 15, 14, 27, 18, 14], [28, 25, 18, 27, 26, 24, 28, 20, 10, 36, 25, 21, 29, 43, 28, 16], [6, 6, 0, 7, 2, 7, 1, 0, 2, 6, 4, 2, 2, 9, 4, 0], [31, 28, 16, 27, 18, 22, 21, 12, 16, 33, 27, 29, 27, 40, 29, 14], [28, 25, 18, 27, 26, 24, 28, 20, 10, 36, 25, 21, 29, 43, 28, 16], [22, 17, 14, 16, 16, 17, 13, 3, 14, 17, 17, 16, 12, 24, 21, 5], [19, 14, 13, 21, 15, 17, 21, 18, 8, 22, 17, 15, 14, 27, 18, 14], [13, 10, 4, 18, 6, 10, 13, 10, 5, 14, 15, 14, 9, 18, 13, 12]]
+please enter 'shift', 'matrix', 'reverse' or (s/m/r) to pick the desired algorithm name
+m
+please type 'encrypt', 'decrypt' or (e/d) to pick the required action
+d
+the result is hello world
+do you want to exit program? y/n
+```
+
+###extra notes 
+make sure the text input for the matrix decryption doesn't contain new lines
 
 ## Algorithms
 ### Shift Algorithm
